@@ -90,4 +90,13 @@ public class Product {
     public void setCategory(Category category) {
         this.category = category;
     }
+
+    public Location getLocation() {
+        return location;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
+    }
+
 }
