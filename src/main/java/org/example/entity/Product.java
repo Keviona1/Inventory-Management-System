@@ -21,12 +21,12 @@ public class Product {
     private String description;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @Column(name = "location_name")
+    @JoinColumn(name = "location_name")
     private Location location;
 
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @Column(name = "category")
+    @JoinColumn(name = "category")
     private Category category;
 
     @CreationTimestamp
