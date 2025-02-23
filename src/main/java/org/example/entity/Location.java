@@ -7,6 +7,12 @@ import org.hibernate.annotations.UpdateTimestamp;
 import java.time.LocalDateTime;
 @Entity
 public class Location {
+    public Location(Long id) {
+        this.id = id;
+    }
+
+    public Location() {
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
