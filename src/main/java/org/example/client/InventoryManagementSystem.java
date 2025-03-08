@@ -5,6 +5,7 @@ import org.example.entity.Product;
 import org.example.service.ProductService;
 import org.example.service.ProductServiceImpl;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class InventoryManagementSystem {
@@ -61,9 +62,7 @@ public class InventoryManagementSystem {
 
     }
 
-    public static void displayAllProducts(){
 
-    }
     public static void findProductById(Scanner scanner){
         System.out.println("Ju lutem fusni id e producktit");
         long id = scanner.nextLong();
@@ -72,11 +71,28 @@ public class InventoryManagementSystem {
         Product product = productService.findOne(id);
         System.out.println(product);
     }
+    private static void displayAllProducts() {
+        ProductService productService = new ProductServiceImpl();
+        List<ProductDto> productDtos = productService.getAllProducts();
 
-    public  static void notifyLowStock(Scanner scanner){
+        if (productDtos.isEmpty()) {
+            System.out.println("No products available.");
+        } else {
+            for (ProductDto productDto : productDtos) {
+                System.out.println(productDto);
+            }
+        }
+    }
+    public  static void notifyLowStock(Scanner scanner) {
         System.out.println("Vendosni limitin e stock-ut:");
         int limitStock = scanner.nextInt();
-        if (limitStock)
+        ProductService productService = new ProductServiceImpl();
+        List<ProductDto> productList = productService.getAllProducts();
+        for (ProductDto product : productList){
+            if (product.getQuantity() <= limitStock){
+                System.out.println(product);
+            }
+        }
     }
 }
 

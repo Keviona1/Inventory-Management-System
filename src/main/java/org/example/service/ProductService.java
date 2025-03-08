@@ -10,4 +10,6 @@ public interface ProductService {
     Product findOne(Long id);
     List<Product> notifyForLowStock();
 List<Product> displayAllProducts();
+
+    List<ProductDto> getAllProducts();
 }

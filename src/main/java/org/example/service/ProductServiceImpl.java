@@ -9,6 +9,8 @@ import org.example.entity.Product;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
+import java.util.List;
+
 public class ProductServiceImpl implements ProductService{
     private final SessionFactory sessionFactory = HibernateConfig.getSessionFactory();
 
@@ -26,6 +28,21 @@ public class ProductServiceImpl implements ProductService{
     @Override
     public Product findOne(Long id) {
         return productDao.findById(id);
+    }
+
+    @Override
+    public List<Product> notifyForLowStock() {
+        return List.of();
+    }
+
+    @Override
+    public List<Product> displayAllProducts() {
+        return List.of();
+    }
+
+    @Override
+    public List<ProductDto> getAllProducts() {
+        return List.of();
     }
 
 

@@ -33,7 +33,20 @@ public class ProductDaoImpl implements ProductDao{
 
     @Override
     public void delete(Long id) {
+try(Session session = sessionFactory.openSession()) {
+    Transaction transaction = session.beginTransaction();
+    Product product = session.get(Product.class, id);
+    session.delete(product);
+    transaction.commit();
 
+
+}
+catch (RuntimeException e){
+    System.out.println(e.getLocalizedMessage());
+}
+catch (Exception e){
+    System.out.println(e.getMessage());
+}
     }
 
     @Override
