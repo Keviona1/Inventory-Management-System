@@ -1,11 +1,14 @@
 package org.example.dao;
 
 import org.example.entity.Product;
+import org.hibernate.QueryException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 
 import java.util.List;
+import java.util.Queue;
 
 public class ProductDaoImpl implements ProductDao{
 
@@ -64,5 +67,14 @@ catch (Exception e){
     Product product = session.get(Product.class, id);
 
     return product;
+    }
+
+    @Override
+    public List<Product> findAllById(List<Long> ids) {
+        try (Session session = sessionFactory.openSession()) {
+            Query query = session.createQuery("from Product where id in (:ids)", Product.class);
+            query.setParameter("ids", ids);
+            return query.getResultList();
+        }
     }
 }

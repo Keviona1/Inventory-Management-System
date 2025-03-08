@@ -9,4 +9,5 @@ void save(Product product);
 void delete(Long id);
 List<Product> findAll();
 Product findById(Long id);
+List<Product> findAllById(List<Long> ids);
 }

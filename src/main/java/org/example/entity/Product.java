@@ -37,6 +37,14 @@ public class Product {
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 
+    public Product(Long id) {
+        this.id = id;
+    }
+
+    public Product() {
+
+    }
+
     public Long getId() {
         return id;
     }

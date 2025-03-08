@@ -7,6 +7,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 import java.time.LocalDateTime;
 import java.util.Set;
 
+@Entity
 public class Client {
     public Client(Long id) {
         this.id = id;
